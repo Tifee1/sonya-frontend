@@ -44,7 +44,7 @@ const DashboardPage = () => {
         </div>
       </header>
 
-      <section className='w-[90%] max-w-3xl mx-auto p-[15px] flex flex-col gap-4 mt-[20px] sm:mt-[86px]'>
+      <section className='w-[90%]  max-w-3xl mx-auto p-[15px] flex flex-col gap-4 mt-[20px] sm:mt-[86px]'>
         <div className='bg-dark-2 flex flex-col gap-3 p-2 rounded-[10px]'>
           <div className='p-3 grid gap-y-6 sm:grid-cols-[1fr,auto,1fr] items-center'>
             <div className='flex gap-[14px]'>
