@@ -1,21 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { HiOutlineMinus } from 'react-icons/hi'
-import { RiEyeFill, RiEyeOffFill } from 'react-icons/ri'
 import { RxCross1 } from 'react-icons/rx'
+import { FaDiscord } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 
 const LoginPage = () => {
-  const [passwordVisible, setPasswordVisible] = useState(false)
-
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible)
-  }
-
   const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    navigate('/dashboard')
+  const handleDiscordLogin = () => {
+    // Redirect to your backend's Discord OAuth endpoint
+    window.location.href = `${import.meta.env.VITE_BACKEND_URL}/auth/discord`
   }
 
   return (
@@ -36,53 +30,21 @@ const LoginPage = () => {
             <img src='/assets/sonya-logo.svg' alt='sonya logo' />
             <span className='font-rocgrotesk text-lg'>Sonya</span>
           </div>
-          <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
+          <div className='flex flex-col gap-4'>
             <div className='flex flex-col gap-1'>
               <h3 className='text-sm font-semibold'>Login</h3>
               <h4 className='text-xs font-normal text-secondary'>
                 Login to access the dashboard
               </h4>
             </div>
-            <div className='flex flex-col gap-1.5'>
-              <label htmlFor='email' className='text-secondary text-xs'>
-                Email
-              </label>
-              <input
-                type='email'
-                name='email'
-                id='email'
-                placeholder='example@gmail.com'
-                className='w-full bg-dark-3 text-secondary placeholder:text-secondary text-xs font-medium p-2.5 rounded-md outline-none'
-              />
-            </div>
-            <div className='flex flex-col gap-1.5'>
-              <label htmlFor='password' className='text-secondary text-xs'>
-                Password
-              </label>
-              <div className='relative'>
-                <input
-                  type={passwordVisible ? 'text' : 'password'}
-                  name='password'
-                  id='password'
-                  placeholder='Enter Password'
-                  className='w-full bg-dark-3 text-secondary placeholder:text-secondary text-xs font-medium p-2.5 rounded-md outline-none'
-                />
-                <button
-                  type='button'
-                  onClick={togglePasswordVisibility}
-                  className='absolute inset-y-0 right-0 px-3 flex items-center text-secondary'
-                >
-                  {passwordVisible ? <RiEyeOffFill /> : <RiEyeFill />}
-                </button>
-              </div>
-            </div>
 
             <button
+              onClick={handleDiscordLogin}
               className='bg-[#7516FF] flex items-center justify-center gap-2 py-3 rounded-md text-xs font-semibold'
-              type='submit'
             >
-              <img src='/assets/log-in.svg' alt='log-in' /> Login
+              <FaDiscord className='text-lg' /> Continue with Discord
             </button>
+
             <div className='border border-dark-4'></div>
             <div className='flex flex-col gap-2'>
               <p className='text-xs text-secondary'>
@@ -98,7 +60,7 @@ const LoginPage = () => {
                 </Link>
               </p>
             </div>
-          </form>
+          </div>
         </section>
       </div>
     </main>
