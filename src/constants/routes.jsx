@@ -47,7 +47,7 @@ const Routes = (
       }
     />
     <Route
-      path='/dashboard/subscription/error'
+      path='/dashboard/subscription/cancel'
       element={
         <PrivateRoute>
           <PaymentCancel />
